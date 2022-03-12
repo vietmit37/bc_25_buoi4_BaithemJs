@@ -23,6 +23,7 @@ document.getElementById("kq1").onclick = function () {
   var thang = document.getElementById("thang").value * 1;
   var nam = document.getElementById("nam").value * 1;
   var thongBao = document.getElementById("thongBao1");
+  var tg;
   switch (thang) {
     case 1:
     case 3:
@@ -31,18 +32,22 @@ document.getElementById("kq1").onclick = function () {
     case 8:
     case 10:
     case 12:
-      var tg = 31;
+      tg = 31;
       break;
     case 2: {
-      var tg = 28 + ((nam % 4 == 0 && nam % 100 != 0) || nam % 400 == 0);
+      tg = 28 + ((nam % 4 == 0 && nam % 100 != 0) || nam % 400 == 0);
       break;
     }
     case 4:
     case 6:
     case 9:
     case 11: {
-      var tg = 30;
+      tg = 30;
     }
+  }
+  if (ngay > tg) {
+    thongBao.innerHTML = "Nhập lại!!!!!";
+    return;
   }
   if (thang == 12 && ngay == tg) {
     nam = nam + 1;
